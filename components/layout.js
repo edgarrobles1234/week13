@@ -9,7 +9,9 @@ export default function Layout({ children, itIsHome }) {
             </Head>
             <header>
                 <nav>
-                    <a href="https://www.youtube.com/watch?v=uRCK3umiKQQ">NFL QBs</a>
+                   {// <a href="https://www.youtube.com/watch?v=uRCK3umiKQQ">NFL QBs</a>
+                     }
+
                 </nav>
             </header>
             <main>
@@ -17,7 +19,7 @@ export default function Layout({ children, itIsHome }) {
             </main>
 
             {!itIsHome && (
-                <Link href="/" className="btn-btn-success mt-3">
+                <Link href="/" className="btn btn-primary mt-3">
                     Going home! Checking changes
                 </Link>
             )

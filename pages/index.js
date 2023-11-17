@@ -1,40 +1,27 @@
 import Link from 'next/link'
 import Layout from '../components/layout';
-import { getSortedList, getSortedList2} from '../lib/data';
+import { getSortedList} from '../lib/data';
 
 export async function getStaticProps(){
-  const allData = getSortedList();//do same thing but for other json write function
-  const allData2=getSortedList2();
+  const allData = await getSortedList();//do same thing but for other json write function
   return {
-    props: { allData , allData2}//,allData2? }
+    props: { allData}//,allData2? }
   };
 }
 
-export default function HomePage ( {allData, allData2} ){//allData2 map other info
+export default function HomePage ( {allData} ){//allData2 map other info
   return (
     <Layout itIsHome>
 
-    <h1>Sorted NFL list</h1>
-    <h2>NFL QBS</h2>
+    <h1>Sorted List from WordPress</h1>
     <ul className="list-group list-group-flush card">
-      <h4>List 1 of QBs</h4>
+      <h2>List of Posts</h2>
       { allData.map (
         
         ({id,team, name}) =>
         <Link key ={id} href={`/${id}`} className="list-group-item list-group-item-action">
-          <div>{name}</div>
-          <div>{team}</div>
-        </Link>
-
-      )
-      }
-      <h2>List 2 of QBs</h2>
-      { allData2.map (
-        
-        ({id,team, name}) =>
-        <Link key ={id} href={`/${id}`} className="list-group-item list-group-item-action">
-          <div>{name}</div>
-          <div>{team}</div>
+          <div>Title: {name}</div>
+          <div>Status: {team}</div>
         </Link>
 
       )
